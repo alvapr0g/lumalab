@@ -47,7 +47,7 @@
             background: #111111;
             border-radius: 9999px;
         }
-        /* Animación suave de aparición */
+        /* Animación de aparición */
         .fade-in-up {
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -73,7 +73,7 @@
                 <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
             </filter>
-            <!-- Filtro para el sangrado orgánico de la acuarela verde -->
+            <!-- Filtro para el sangrado de la acuarela verde -->
             <filter id="watercolor-wash" x="-20%" y="-20%" width="140%" height="140%">
                 <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" result="noise"/>
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
@@ -86,28 +86,82 @@
         <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
             <!-- Logo + Wordmark -->
             <a href="#" class="flex items-center gap-3 group" aria-label="Luma Lab Inicio">
-                <!-- SVG Logo Triskelión (Image 3) -->
+                <!-- SVG Logo Hexagonal de 6 aspas -->
                 <svg viewBox="0 0 100 100" class="h-9 w-auto transition-transform duration-500 group-hover:rotate-12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="11" fill="#111111"/>
-                    <!-- Aspa Superior -->
-                    <path d="M42 41 L42 16 L50 9 L58 16 L58 41" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
-                    <line x1="50" y1="9" x2="50" y2="41" stroke="#111111" stroke-width="2.5"/>
-                    <line x1="46" y1="17" x2="46" y2="41" stroke="#111111" stroke-width="1.5"/>
-                    <line x1="54" y1="17" x2="54" y2="41" stroke="#111111" stroke-width="1.5"/>
-                    <!-- Aspa Inferior Derecha (Rotada 120°) -->
-                    <g transform="rotate(120 50 50)">
-                        <path d="M42 41 L42 16 L50 9 L58 16 L58 41" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
-                        <line x1="50" y1="9" x2="50" y2="41" stroke="#111111" stroke-width="2.5"/>
-                        <line x1="46" y1="17" x2="46" y2="41" stroke="#111111" stroke-width="1.5"/>
-                        <line x1="54" y1="17" x2="54" y2="41" stroke="#111111" stroke-width="1.5"/>
+                    <defs>
+                        <clipPath id="header-blade-clip">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" />
+                        </clipPath>
+                    </defs>
+                    <g>
+                        <!-- Aspa 1 (0 deg) -->
+                        <g transform="rotate(0 50 50)">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                            <g clip-path="url(#header-blade-clip)">
+                                <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                            </g>
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                        </g>
+                        <!-- Aspa 2 (60 deg) -->
+                        <g transform="rotate(60 50 50)">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                            <g clip-path="url(#header-blade-clip)">
+                                <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                            </g>
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                        </g>
+                        <!-- Aspa 3 (120 deg) -->
+                        <g transform="rotate(120 50 50)">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                            <g clip-path="url(#header-blade-clip)">
+                                <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                            </g>
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                        </g>
+                        <!-- Aspa 4 (180 deg) -->
+                        <g transform="rotate(180 50 50)">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                            <g clip-path="url(#header-blade-clip)">
+                                <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                            </g>
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                        </g>
+                        <!-- Aspa 5 (240 deg) -->
+                        <g transform="rotate(240 50 50)">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                            <g clip-path="url(#header-blade-clip)">
+                                <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                            </g>
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                        </g>
+                        <!-- Aspa 6 (300 deg) -->
+                        <g transform="rotate(300 50 50)">
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                            <g clip-path="url(#header-blade-clip)">
+                                <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                            </g>
+                            <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                        </g>
                     </g>
-                    <!-- Aspa Inferior Izquierda (Rotada 240°) -->
-                    <g transform="rotate(240 50 50)">
-                        <path d="M42 41 L42 16 L50 9 L58 16 L58 41" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
-                        <line x1="50" y1="9" x2="50" y2="41" stroke="#111111" stroke-width="2.5"/>
-                        <line x1="46" y1="17" x2="46" y2="41" stroke="#111111" stroke-width="1.5"/>
-                        <line x1="54" y1="17" x2="54" y2="41" stroke="#111111" stroke-width="1.5"/>
-                    </g>
+                    <circle cx="50" cy="50" r="11.5" fill="#111111"/>
                 </svg>
                 <span class="font-display font-extrabold text-2xl tracking-tight text-ink">Luma Lab</span>
             </a>
@@ -150,16 +204,13 @@
     </header>
 
     <!-- 2. HERO SECTION -->
-    <section class="pt-32 pb-24 md:py-40 max-w-7xl mx-auto px-6 md:px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section class="pt-32 pb-24 md:pt-40 md:pb-24 max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            <!-- Hero Izquierda -->
+            <!-- Hero Izquierda (Con el espaciado y saltos exactos de la maqueta) -->
             <div class="space-y-8 fade-in-up">
-                <h1 class="font-display font-extrabold text-[48px] md:text-[76px] lg:text-[84px] leading-[1.05] text-ink tracking-tight">
-                    Tecnología que nace en el sur <br class="hidden md:inline">
-                    <span class="relative">
-                        y llega al mundo.
-                    </span>
+                <h1 class="font-display font-extrabold text-[56px] md:text-[76px] lg:text-[84px] leading-[1.05] text-ink tracking-tight">
+                    Tecnología<br>que nace en<br>el sur<br>y llega al<br>mundo.
                 </h1>
                 <p class="text-lg md:text-xl text-mediumGray max-w-[480px] leading-relaxed">
                     Somos el espacio donde se aprende, se debate y se construye con Inteligencia Artificial desde el sur de Chile. Uniendo el territorio a través de talleres, hackathones, conversatorios y un podcast local.
@@ -179,63 +230,9 @@
                 </div>
             </div>
 
-            <!-- Hero Derecha (Ilustración Principal Estilo Image 2) -->
-            <div class="w-full relative flex justify-center lg:justify-end">
-                <svg viewBox="0 0 500 500" class="w-full max-w-[480px] h-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustración hecha a mano que evoca mitología y tecnología en el sur de Chile">
-                    <!-- Efecto Acuarela Verde (Detrás de los elementos) -->
-                    <g filter="url(#watercolor-wash)" opacity="0.85">
-                        <!-- Copa de los árboles / Arbustos -->
-                        <path d="M 330 240 Q 300 200 350 170 Q 400 160 410 210 Q 430 250 380 270 Z" fill="#9CC178" />
-                        <path d="M 210 160 Q 190 140 220 120 Q 250 110 260 140 Q 280 170 230 180 Z" fill="#9CC178" />
-                        <path d="M 120 330 Q 100 310 130 290 Q 160 280 170 310 Q 190 340 140 350 Z" fill="#9CC178" />
-                    </g>
-
-                    <!-- Trazo Negro Hecho a Mano -->
-                    <g filter="url(#handdrawn)" stroke="#111111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                        
-                        <!-- Colinas con Textura (Stippling simulado con guiones) -->
-                        <path d="M 50 380 Q 100 310 150 380" />
-                        <path d="M 110 380 Q 170 290 230 380" />
-                        <!-- Puntos de textura sobre las colinas -->
-                        <path d="M 90 350 M 92 350 M 100 360 M 102 360 M 130 330 M 132 330" stroke-dasharray="1 6" stroke-width="3" />
-                        <path d="M 150 330 M 152 330 M 160 340 M 162 340 M 180 320 M 182 320" stroke-dasharray="1 6" stroke-width="3" />
-
-                        <!-- Cerros de Fondo con arbustos coronados -->
-                        <path d="M 180 240 Q 240 160 300 240" />
-                        <path d="M 240 240 Q 320 140 400 240" />
-                        <path d="M 210 210 M 212 210 M 220 220 M 222 220 M 260 180 M 262 180" stroke-dasharray="1 6" stroke-width="3" />
-                        <path d="M 300 190 M 302 190 M 320 170 M 322 170 M 340 190 M 342 190" stroke-dasharray="1 6" stroke-width="3" />
-
-                        <!-- Árbol de Luma (Tronco moteado y ramas) -->
-                        <path d="M 370 380 Q 365 310 355 260 Q 345 220 350 180" />
-                        <path d="M 385 380 Q 380 320 375 280 Q 385 240 370 200" />
-                        <!-- Ramificaciones -->
-                        <path d="M 360 250 Q 330 220 325 200" />
-                        <path d="M 375 270 Q 400 240 420 230" />
-                        <!-- Copa estructural dibujada -->
-                        <path d="M 320 200 C 300 180 340 150 360 165 C 380 140 410 170 400 190 C 420 210 390 240 370 225 C 350 245 310 220 320 200 Z" />
-                        
-                        <!-- Persona de Perfil en Movimiento (Cortando con Hacha) -->
-                        <!-- Pierna trasera -->
-                        <path d="M 240 380 L 260 340" />
-                        <!-- Pierna delantera -->
-                        <path d="M 285 380 L 280 340" />
-                        <!-- Torso e inclinación -->
-                        <path d="M 260 340 L 280 340 L 275 300 C 275 295 285 290 280 280" fill="#111111" />
-                        <!-- Mochila -->
-                        <path d="M 255 305 Q 245 315 255 330 Z" />
-                        <!-- Brazos sosteniendo el Hacha -->
-                        <path d="M 275 300 L 310 315" />
-                        <path d="M 270 310 L 305 325" />
-                        <!-- Hacha golpeando el tronco -->
-                        <path d="M 305 325 L 340 335 L 345 320 L 335 315 Z" fill="#111111" />
-                        <path d="M 340 335 L 342 345" />
-
-                        <!-- Ondas concéntricas o de suelo -->
-                        <path d="M 120 410 Q 250 430 420 410" stroke-width="1.5" />
-                        <path d="M 180 430 Q 250 445 340 430" stroke-width="1.0" />
-                    </g>
-                </svg>
+            <!-- Hero Derecha (Ilustración de la Isla - Enlace Directo) -->
+            <div class="w-full relative flex justify-center lg:justify-end fade-in-up" style="animation-delay: 0.15s;">
+                <img src="https://i.postimg.cc/KYJSq3yS/lumaimage.png" alt="Ilustración mitológica y tecnológica de Luma Lab en el Sur de Chile" class="w-full max-w-[540px] h-auto object-contain select-none">
             </div>
 
         </div>
@@ -305,11 +302,11 @@
                 
                 <!-- Tarjeta 1 -->
                 <div class="space-y-4">
-                    <div class="relative w-16 h-16 flex items-center justify-center">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 20 50 Q 30 20 60 30 Q 90 40 70 70 Q 40 90 20 50 Z" fill="#9CC178" />
                         </svg>
-                        <svg class="relative w-8 h-8 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                     </div>
@@ -321,11 +318,11 @@
 
                 <!-- Tarjeta 2 -->
                 <div class="space-y-4">
-                    <div class="relative w-16 h-16 flex items-center justify-center">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 30 40 Q 50 10 80 30 Q 90 60 60 80 Q 20 70 30 40 Z" fill="#9CC178" />
                         </svg>
-                        <svg class="relative w-8 h-8 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                         </svg>
                     </div>
@@ -337,11 +334,11 @@
 
                 <!-- Tarjeta 3 -->
                 <div class="space-y-4">
-                    <div class="relative w-16 h-16 flex items-center justify-center">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 25 30 Q 60 20 80 50 Q 70 80 40 75 Q 10 60 25 30 Z" fill="#9CC178" />
                         </svg>
-                        <svg class="relative w-8 h-8 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
@@ -353,11 +350,11 @@
 
                 <!-- Tarjeta 4 -->
                 <div class="space-y-4">
-                    <div class="relative w-16 h-16 flex items-center justify-center">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 40 20 Q 80 30 70 60 Q 60 90 30 70 Q 10 40 40 20 Z" fill="#9CC178" />
                         </svg>
-                        <svg class="relative w-8 h-8 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </div>
@@ -369,11 +366,11 @@
 
                 <!-- Tarjeta 5 -->
                 <div class="space-y-4" id="podcast">
-                    <div class="relative w-16 h-16 flex items-center justify-center">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 20 40 Q 50 20 70 40 Q 80 70 50 80 Q 10 60 20 40 Z" fill="#9CC178" />
                         </svg>
-                        <svg class="relative w-8 h-8 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                         </svg>
                     </div>
@@ -385,11 +382,11 @@
 
                 <!-- Tarjeta 6 -->
                 <div class="space-y-4">
-                    <div class="relative w-16 h-16 flex items-center justify-center">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 30 30 Q 70 10 80 40 Q 90 70 50 60 Q 20 50 30 30 Z" fill="#9CC178" />
                         </svg>
-                        <svg class="relative w-8 h-8 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
@@ -544,12 +541,12 @@
 
             <!-- Grid 3 columnas para integrantes -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Miembro 1 -->
+                <!-- Miembro 1 (César Oyarzo) -->
                 <div class="space-y-6">
-                    <div class="aspect-square bg-gray-50 relative flex items-center justify-center overflow-hidden border border-gray-100">
+                    <div class="aspect-square bg-[#F9F9F9] relative flex items-center justify-center overflow-hidden border border-gray-100">
                         <!-- Watercolor Green Accent -->
                         <div class="absolute w-32 h-32 rounded-full bg-sageGreen opacity-80" style="filter: url(#watercolor-wash); top: 30%; left: 30%;"></div>
-                        <!-- Line-art face placeholder (Image style) -->
+                        <!-- Line-art face placeholder (César - Anteojos) -->
                         <svg viewBox="0 0 100 100" class="absolute w-4/5 h-4/5 text-ink" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#handdrawn)">
                             <!-- Rostro minimalista hecho a mano -->
                             <path d="M 35 45 Q 37 30 50 30 Q 63 30 65 45 C 65 55 58 65 50 65 C 42 65 35 55 35 45 Z" />
@@ -561,14 +558,14 @@
                             <path d="M 46 55 Q 50 58 54 55" />
                             <!-- Pelo/Gorro -->
                             <path d="M 33 43 C 28 35 40 25 50 28 C 60 25 72 35 67 43" />
-                            <!-- Cuello y hombros con toques de ropa verde -->
+                            <!-- Cuello y hombros -->
                             <path d="M 46 65 L 46 75 L 30 85" />
                             <path d="M 54 65 L 54 75 L 70 85" />
                             <path d="M 30 85 Q 50 82 70 85" stroke-dasharray="2 4" />
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-display font-bold text-2xl text-ink">Matías Lagos</h4>
+                        <h4 class="font-display font-bold text-2xl text-ink">César Oyarzo</h4>
                         <p class="text-sm font-semibold text-deepGreen">Director de Tecnología</p>
                         <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
                             "Creo firmemente en que la inteligencia artificial más potente es la que se adapta a las economías locales."
@@ -576,15 +573,16 @@
                     </div>
                 </div>
 
-                <!-- Miembro 2 -->
+                <!-- Miembro 2 (Víctor Saldivia) -->
                 <div class="space-y-6">
-                    <div class="aspect-square bg-gray-50 relative flex items-center justify-center overflow-hidden border border-gray-100">
+                    <div class="aspect-square bg-[#F9F9F9] relative flex items-center justify-center overflow-hidden border border-gray-100">
                         <!-- Watercolor Green Accent -->
                         <div class="absolute w-32 h-32 rounded-full bg-sageGreen opacity-80" style="filter: url(#watercolor-wash); top: 25%; left: 20%;"></div>
+                        <!-- Line-art face placeholder (Víctor/Sofia - Cabello con flequillo) -->
                         <svg viewBox="0 0 100 100" class="absolute w-4/5 h-4/5 text-ink" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#handdrawn)">
                             <!-- Rostro minimalista hecho a mano -->
                             <path d="M 35 45 Q 37 30 50 30 Q 63 30 65 45 C 65 55 58 65 50 65 C 42 65 35 55 35 45 Z" />
-                            <!-- Rasgos femeninos -->
+                            <!-- Rasgos -->
                             <path d="M 47 54 Q 50 56 53 54" />
                             <!-- Ojos cerrados/tranquilos -->
                             <path d="M 40 45 Q 43 43 45 45" />
@@ -599,7 +597,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-display font-bold text-2xl text-ink">Sofía Valenzuela</h4>
+                        <h4 class="font-display font-bold text-2xl text-ink">Víctor Saldivia</h4>
                         <p class="text-sm font-semibold text-deepGreen">Encargada de Comunidad</p>
                         <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
                             "Conectar a las personas indicadas es el primer paso para crear proyectos tecnológicos con un verdadero sentido social."
@@ -607,26 +605,30 @@
                     </div>
                 </div>
 
-                <!-- Miembro 3 -->
+                <!-- Miembro 3 (Álvaro Santana) -->
                 <div class="space-y-6">
-                    <div class="aspect-square bg-gray-50 relative flex items-center justify-center overflow-hidden border border-gray-100">
+                    <div class="aspect-square bg-[#F9F9F9] relative flex items-center justify-center overflow-hidden border border-gray-100">
                         <!-- Watercolor Green Accent -->
                         <div class="absolute w-32 h-32 rounded-full bg-sageGreen opacity-80" style="filter: url(#watercolor-wash); top: 35%; left: 25%;"></div>
+                        <!-- Line-art face placeholder (Álvaro - Sonrisa, pelo corto/trenzas a los lados) -->
                         <svg viewBox="0 0 100 100" class="absolute w-4/5 h-4/5 text-ink" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#handdrawn)">
                             <!-- Rostro minimalista hecho a mano -->
                             <path d="M 35 45 Q 37 30 50 30 Q 63 30 65 45 C 65 55 58 65 50 65 C 42 65 35 55 35 45 Z" />
-                            <!-- Barba y bigote con puntillismo -->
-                            <path d="M 35 50 C 35 65 40 72 50 72 C 60 72 65 65 65 50" stroke-dasharray="1 3" />
+                            <!-- Barba sutil lateral y sonrisa -->
+                            <path d="M 35 50 C 35 63 42 68 50 68 C 58 68 65 63 65 50" stroke-dasharray="1 3" />
                             <path d="M 45 52 Q 50 55 55 52" />
                             <circle cx="43" cy="44" r="3" fill="#111111" />
                             <circle cx="57" cy="44" r="3" fill="#111111" />
+                            <!-- Trenzas decorativas de estilo artesanal -->
+                            <path d="M 32 45 Q 26 55 28 65" />
+                            <path d="M 68 45 Q 74 55 72 65" />
                             <!-- Cuello y hombros -->
                             <path d="M 46 65 L 46 75 L 30 85" />
                             <path d="M 54 65 L 54 75 L 70 85" />
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-display font-bold text-2xl text-ink">Tomás Sanhueza</h4>
+                        <h4 class="font-display font-bold text-2xl text-ink">Álvaro Santana</h4>
                         <p class="text-sm font-semibold text-deepGreen">Director Creativo</p>
                         <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
                             "La estética y la simplicidad son críticas. Si el software no se entiende visualmente, no sirve en el mundo real."
@@ -691,17 +693,80 @@
             <div class="space-y-6">
                 <div class="flex items-center gap-3">
                     <svg viewBox="0 0 100 100" class="h-9 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="11" fill="#111111"/>
-                        <path d="M42 41 L42 16 L50 9 L58 16 L58 41" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
-                        <line x1="50" y1="9" x2="50" y2="41" stroke="#111111" stroke-width="2.5"/>
-                        <g transform="rotate(120 50 50)">
-                            <path d="M42 41 L42 16 L50 9 L58 16 L58 41" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
-                            <line x1="50" y1="9" x2="50" y2="41" stroke="#111111" stroke-width="2.5"/>
+                        <defs>
+                            <clipPath id="footer-blade-clip">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" />
+                            </clipPath>
+                        </defs>
+                        <g>
+                            <!-- Aspa 1 (0 deg) -->
+                            <g transform="rotate(0 50 50)">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                                <g clip-path="url(#footer-blade-clip)">
+                                    <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                    <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                                </g>
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                            </g>
+                            <!-- Aspa 2 (60 deg) -->
+                            <g transform="rotate(60 50 50)">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                                <g clip-path="url(#footer-blade-clip)">
+                                    <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                    <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                                </g>
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                            </g>
+                            <!-- Aspa 3 (120 deg) -->
+                            <g transform="rotate(120 50 50)">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                                <g clip-path="url(#footer-blade-clip)">
+                                    <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                    <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                                </g>
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                            </g>
+                            <!-- Aspa 4 (180 deg) -->
+                            <g transform="rotate(180 50 50)">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                                <g clip-path="url(#footer-blade-clip)">
+                                    <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                    <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                                </g>
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                            </g>
+                            <!-- Aspa 5 (240 deg) -->
+                            <g transform="rotate(240 50 50)">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                                <g clip-path="url(#footer-blade-clip)">
+                                    <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                    <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                                </g>
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                            </g>
+                            <!-- Aspa 6 (300 deg) -->
+                            <g transform="rotate(300 50 50)">
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" fill="#FFFFFF" />
+                                <g clip-path="url(#footer-blade-clip)">
+                                    <line x1="50" y1="5" x2="36.7" y2="65" stroke="#111111" stroke-width="4.5" />
+                                    <line x1="60" y1="7.2" x2="46.7" y2="67.2" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="70" y1="9.4" x2="56.7" y2="69.4" stroke="#111111" stroke-width="2.5" />
+                                    <line x1="80" y1="11.6" x2="66.7" y2="71.6" stroke="#111111" stroke-width="2.5" />
+                                </g>
+                                <path d="M 50 5 L 89 27.5 L 69.3 50 L 36.7 65 Z" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none" />
+                            </g>
                         </g>
-                        <g transform="rotate(240 50 50)">
-                            <path d="M42 41 L42 16 L50 9 L58 16 L58 41" stroke="#111111" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
-                            <line x1="50" y1="9" x2="50" y2="41" stroke="#111111" stroke-width="2.5"/>
-                        </g>
+                        <circle cx="50" cy="50" r="11.5" fill="#111111"/>
                     </svg>
                     <span class="font-display font-extrabold text-2xl tracking-tight text-ink">Luma Lab</span>
                 </div>
@@ -736,13 +801,13 @@
                 <div class="flex items-center gap-4">
                     <!-- GitHub Link (Line art style) -->
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 border-2 border-ink rounded-full hover:bg-sageGreen hover:text-ink text-ink transition-colors" aria-label="GitHub">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                         </svg>
                     </a>
                     <!-- LinkedIn Link -->
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2 border-2 border-ink rounded-full hover:bg-sageGreen hover:text-ink text-ink transition-colors" aria-label="LinkedIn">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </a>
