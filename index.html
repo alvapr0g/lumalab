@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luma Lab — Tecnología e Inteligencia Artificial desde el Sur de Chile</title>
+    <link rel="stylesheet" href="assets/luma/luma.css">
+    <script src="assets/luma/luma.js" defer></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -156,8 +158,18 @@
             </div>
 
             <!-- Hero Derecha (Ancho ajustado a 7 de 12 columnas para que la imagen sea más grande) -->
-            <div class="w-full relative flex justify-center lg:justify-end fade-in-up lg:col-span-7" style="animation-delay: 0.15s;">
-                <img src="https://i.postimg.cc/KYcgwqpf/Gemini-Generated-Image-4x72z84x72z84x72.jpg" alt="Ilustración mitológica y tecnológica de Luma Lab en el Sur de Chile" class="w-full max-w-[500px] lg:max-w-[620px] h-auto object-contain select-none">
+            <div class="luma-hero w-full relative flex justify-center lg:justify-end fade-in-up lg:col-span-7" style="animation-delay: 0.15s;">
+                <figure class="luma-morph" data-luma-morph>
+                    <div class="luma-morph__scene" role="img" aria-label="Un brujo se transforma en una niña que aprende, una adolescente y una mujer que trabaja con inteligencia artificial. El paisaje de dragones del sur de Chile permanece inmóvil.">
+                        <img class="luma-morph__background" src="assets/luma/landscape.webp" width="1100" height="1143" alt="" fetchpriority="high" decoding="async">
+                        <img class="luma-morph__character luma-morph__character--wizard" data-src="assets/luma/wizard.webp" alt="" decoding="async">
+                        <img class="luma-morph__character" data-src="assets/luma/child.webp" alt="" decoding="async">
+                        <img class="luma-morph__character" data-src="assets/luma/teen.webp" alt="" decoding="async">
+                        <img class="luma-morph__character luma-morph__character--adult" src="assets/luma/adult.webp" alt="" decoding="async">
+                        <span class="luma-morph__glow" aria-hidden="true"></span>
+                    </div>
+                    <button class="luma-morph__toggle" type="button" aria-pressed="false" hidden>Pausar animación</button>
+                </figure>
             </div>
 
         </div>
