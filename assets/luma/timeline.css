@@ -32,7 +32,7 @@
 .luma-photo{position:fixed;inset:auto;margin:0;width:min(320px,calc(100vw - 44px));max-width:none;padding:0;border:0;background:transparent;color:#111;overflow:visible}
 .luma-photo::backdrop{background:transparent}
 .luma-photo__card{position:relative;padding:5px;border:3px solid #9cc178;border-radius:18px;background:white;box-shadow:0 18px 48px #1113;transform:rotate(-3deg);animation:luma-photo-float 5s ease-in-out infinite}
-.luma-photo__image{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:10px}
+.luma-photo__image{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:10px}
 .luma-photo__image[hidden],.luma-photo__empty[hidden]{display:none}
 .luma-photo__caption{margin:0;padding:12px 9px 8px;font:600 13px/1.5 Inter,sans-serif}
 .luma-photo__close{position:absolute;right:-13px;top:-13px;z-index:1;width:32px;height:32px;border:2px solid #9cc178;border-radius:50%;background:#fff;color:#111;cursor:pointer;font:24px/1 Inter,sans-serif;box-shadow:0 2px 8px #1112}
@@ -40,3 +40,16 @@
 .luma-photo__empty{display:grid;place-items:center;min-height:120px;background:#f5f8f2;border-radius:10px;color:#4a6b3a;font:500 14px/1.5 Inter,sans-serif}
 @keyframes luma-photo-float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(2deg)}}
 @media(prefers-reduced-motion:reduce){.luma-photo__card{animation:none;transform:none}.luma-timeline__number{transition:none}}
+
+/* A gentle staggered invitation to explore, with generous touch targets. */
+.luma-timeline__number{animation:luma-hito-pulse 4s ease-in-out infinite;touch-action:manipulation}
+.luma-timeline__number::after{content:"";position:absolute;inset:-8px;border-radius:50%}
+.luma-timeline__item:nth-child(2) .luma-timeline__number{animation-delay:.25s}
+.luma-timeline__item:nth-child(3) .luma-timeline__number{animation-delay:.5s}
+.luma-timeline__item:nth-child(4) .luma-timeline__number{animation-delay:.75s}
+.luma-timeline__item:nth-child(5) .luma-timeline__number{animation-delay:1s}
+.luma-timeline__item:nth-child(6) .luma-timeline__number{animation-delay:1.25s}
+.luma-timeline__item:nth-child(7) .luma-timeline__number{animation-delay:1.5s}
+.luma-timeline__number:hover,.luma-timeline__number[aria-expanded="true"]{animation:none;background:#9cc178;color:#111}
+@keyframes luma-hito-pulse{0%,65%,100%{background:#111;color:#fff}30%{background:#9cc178;color:#111}}
+@media(prefers-reduced-motion:reduce){.luma-timeline__number{animation:none}}
