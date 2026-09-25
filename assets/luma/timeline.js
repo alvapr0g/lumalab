@@ -1,4 +1,5 @@
 (() => {
+  const t = text => window.LumaI18n?.t(text) || text;
   const panel = document.getElementById('milestone-photo');
   if (!panel) return;
   const photo = panel.querySelector('img');
@@ -32,23 +33,26 @@
     clearTimeout(leaveTimer);
   }
   buttons.forEach(button => {
-    const title = button.closest('li').querySelector('h3').textContent;
-    button.setAttribute('aria-label', `Ver foto: ${title}`);
+    const getTitle = () => button.closest('li').querySelector('h3').textContent;
+    const updateLabel = () => button.setAttribute('aria-label', `${t('Ver foto')}: ${getTitle()}`);
+    updateLabel();
+    document.addEventListener('luma:languagechange', updateLabel);
     function open() {
       clearTimeout(leaveTimer);
       if (active === button && panel.matches(':popover-open')) return;
       reset();
       active = button;
       button.setAttribute('aria-expanded', 'true');
+      const title = getTitle();
       caption.textContent = title;
       photo.hidden = !button.dataset.photo;
       empty.hidden = !!button.dataset.photo;
-      empty.textContent = 'Foto próximamente';
+      empty.textContent = t('Foto próximamente');
       if (button.dataset.photo) {
         photo.width = Number(button.dataset.photoWidth) || 1280;
         photo.height = Number(button.dataset.photoHeight) || 960;
         photo.src = button.dataset.photo;
-        photo.alt = button.dataset.photoAlt || title;
+        photo.alt = t(button.dataset.photoAlt) || title;
       } else {
         photo.removeAttribute('src');
         photo.alt = '';
@@ -93,8 +97,12 @@
   photo.addEventListener('error', () => {
     photo.hidden = true;
     empty.hidden = false;
-    empty.textContent = 'No se pudo cargar la foto.';
+    empty.textContent = t('No se pudo cargar la foto.');
     position();
+  });
+  document.addEventListener('luma:languagechange', () => {
+    if (panel.matches(':popover-open')) panel.hidePopover();
+    reset();
   });
   window.addEventListener('resize', position);
   window.addEventListener('scroll', () => {

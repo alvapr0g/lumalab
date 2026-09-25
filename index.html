@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="assets/luma/luma.css?v=20260925-auto">
     <link rel="stylesheet" href="assets/luma/timeline.css?v=photos-2">
     <script src="assets/luma/luma.js?v=20260925-auto" defer></script>
-    <script src="assets/luma/timeline.js?v=photos-2" defer></script>
+    <script src="assets/luma/i18n.js?v=2" defer></script>
+    <script src="assets/luma/timeline.js?v=language-1" defer></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,40 +92,44 @@
             <!-- Logo + Wordmark -->
             <a href="#" class="flex items-center gap-3 group" aria-label="Luma Lab Inicio">
                 <!-- Imagen del Logo Hexagonal desde Postimg con rotación suave interactiva -->
-                <img src="https://i.postimg.cc/T3WnJFBj/luma-icono-36-1.png" alt="Logo Luma Lab" class="h-9 w-auto object-contain transition-transform duration-500 group-hover:rotate-12 select-none">
+                <img src="assets/luma/logo.png" alt="Logo Luma Lab" class="h-9 w-auto object-contain transition-transform duration-500 group-hover:rotate-12 select-none">
                 <span class="font-display font-extrabold text-2xl tracking-tight text-ink">Luma Lab</span>
             </a>
 
             <!-- Navegación Desktop -->
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-mediumGray">
+            <nav class="hidden xl:flex items-center gap-5 text-sm font-medium text-mediumGray">
                 <a href="#metodologia" class="hover:text-ink transition-colors">Nuestra Filosofía</a>
                 <a href="#programas" class="hover:text-ink transition-colors">Programas</a>
-                <a href="#comunidad" class="hover:text-ink transition-colors">Comunidad</a>
-                <a href="#podcast" class="hover:text-ink transition-colors">Podcast</a>
+                <a href="#comunidad" class="hover:text-ink transition-colors">Nuestro camino</a>
+                <a href="#podcast" class="hover:text-ink transition-colors">Recursos</a>
                 <a href="#equipo" class="hover:text-ink transition-colors">Nosotros</a>
             </nav>
 
             <!-- CTA Botón -->
-            <div class="hidden lg:block">
-                <a href="#cta" class="inline-block bg-ink text-white hover:bg-deepGreen rounded-full px-6 py-3 font-semibold text-sm transition-colors duration-300">
+            <div class="flex items-center gap-3">
+                <a href="#cta" class="hidden xl:inline-block bg-ink text-white hover:bg-deepGreen rounded-full px-6 py-3 font-semibold text-sm transition-colors duration-300">
                     Súmate a la comunidad
                 </a>
-            </div>
+                <select id="language-select" aria-label="Idioma" class="relative z-50 rounded-full border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-ink focus:outline focus:outline-2 focus:outline-deepGreen">
+                    <option value="es" lang="es">🇨🇱 Español</option>
+                    <option value="en" lang="en">🇬🇧 English</option>
+                </select>
 
             <!-- Botón Menú Hamburguesa (Móvil) -->
-            <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 focus:outline-none z-50" aria-label="Abrir menú">
+            <button id="menu-btn" class="xl:hidden flex flex-col gap-1.5 focus:outline-none z-50" aria-label="Abrir menú">
                 <span class="w-6 h-0.5 bg-ink transition-transform duration-300" id="bar1"></span>
                 <span class="w-6 h-0.5 bg-ink transition-opacity duration-300" id="bar2"></span>
                 <span class="w-6 h-0.5 bg-ink transition-transform duration-300" id="bar3"></span>
             </button>
+            </div>
         </div>
 
         <!-- Menú Móvil Desplegable -->
         <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center px-8 space-y-8 text-2xl font-bold font-display">
             <a href="#metodologia" class="mobile-link text-ink hover:text-deepGreen">Nuestra Filosofía</a>
             <a href="#programas" class="mobile-link text-ink hover:text-deepGreen">Programas</a>
-            <a href="#comunidad" class="mobile-link text-ink hover:text-deepGreen">Comunidad</a>
-            <a href="#podcast" class="mobile-link text-ink hover:text-deepGreen">Podcast</a>
+            <a href="#comunidad" class="mobile-link text-ink hover:text-deepGreen">Nuestro camino</a>
+            <a href="#podcast" class="mobile-link text-ink hover:text-deepGreen">Recursos</a>
             <a href="#equipo" class="mobile-link text-ink hover:text-deepGreen">Nosotros</a>
             <a href="#cta" class="mobile-link inline-block bg-ink text-white text-center hover:bg-deepGreen rounded-full py-4 text-lg font-semibold transition-colors">
                 Súmate a la comunidad
@@ -280,7 +285,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-ink">Hackathones (Próximamente)</h3>
+                    <h3 class="font-display font-bold text-2xl text-ink">Talleres a escuelas</h3>
                     <p class="text-mediumGray text-base leading-relaxed">
                         Maratones de diseño y programación colaborativa orientadas a resolver desafíos específicos de las comunidades locales en tiempo récord.
                     </p>
@@ -312,7 +317,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                         </svg>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-ink">Señal Luma</h3>
+                    <h3 class="font-display font-bold text-2xl text-ink">Señal LUMA</h3>
                     <p class="text-mediumGray text-base leading-relaxed">
                         Nuestro canal auditivo. Conversamos con creadores, ingenieros y científicos que están repensando los límites tecnológicos desde Chile.
                     </p>
@@ -562,7 +567,7 @@
             <!-- Logo / Columna 1 -->
             <div class="space-y-6">
                 <div class="flex items-center gap-3">
-                    <img src="https://i.postimg.cc/T3WnJFBj/luma-icono-36-1.png" alt="Logo Luma Lab" class="h-9 w-auto object-contain select-none">
+                    <img src="assets/luma/logo.png" alt="Logo Luma Lab" class="h-9 w-auto object-contain select-none">
                     <span class="font-display font-extrabold text-2xl tracking-tight text-ink">Luma Lab</span>
                 </div>
                 <p class="text-sm leading-relaxed max-w-[240px]">
@@ -576,8 +581,8 @@
                 <ul class="space-y-2 text-sm">
                     <li><a href="#metodologia" class="hover:text-ink transition-colors">Filosofía LUMA</a></li>
                     <li><a href="#programas" class="hover:text-ink transition-colors">Programas</a></li>
-                    <li><a href="#comunidad" class="hover:text-ink transition-colors">Comunidad</a></li>
-                    <li><a href="#podcast" class="hover:text-ink transition-colors">Podcast</a></li>
+                    <li><a href="#comunidad" class="hover:text-ink transition-colors">Nuestro camino</a></li>
+                    <li><a href="#podcast" class="hover:text-ink transition-colors">Recursos</a></li>
                 </ul>
             </div>
 
