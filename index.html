@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luma Lab — Tecnología e Inteligencia Artificial desde el Sur de Chile</title>
     <link rel="stylesheet" href="assets/luma/luma.css?v=20260925-auto">
-    <link rel="stylesheet" href="assets/luma/timeline.css">
+    <link rel="stylesheet" href="assets/luma/timeline.css?v=photos-1">
     <script src="assets/luma/luma.js?v=20260925-auto" defer></script>
+    <script src="assets/luma/timeline.js?v=photos-1" defer></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -354,7 +355,7 @@
                 </svg>
                 <ol class="luma-timeline__list" aria-label="Historia de LUMA Lab">
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">1</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 1">1</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Marzo – junio 2026</p>
                             <h3>Mentorías de Proyectos Web</h3>
@@ -363,7 +364,7 @@
                         </div>
                     </li>
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">2</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 2" data-photo="assets/luma/hitos/expo-ingenierias-2026.jpg" data-photo-alt="Participantes de la Expo Ingenierías 2026 reunidos junto a las letras de ULagos">2</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Junio 2026</p>
                             <h3>Expo Ingenierías 2026 · ICINF ULagos</h3>
@@ -372,7 +373,7 @@
                         </div>
                     </li>
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">3</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 3">3</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Julio 2026</p>
                             <h3>Taller: “IA para Emprendedores”</h3>
@@ -381,7 +382,7 @@
                         </div>
                     </li>
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">4</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 4">4</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Agosto 2026</p>
                             <h3>Tomando cervezas</h3>
@@ -390,7 +391,7 @@
                         </div>
                     </li>
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">5</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 5">5</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Septiembre 2026</p>
                             <h3>Nace LUMA Lab</h3>
@@ -399,7 +400,7 @@
                         </div>
                     </li>
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">6</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 6">6</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Octubre 2026</p>
                             <h3>Hitos</h3>
@@ -408,7 +409,7 @@
                         </div>
                     </li>
                     <li class="luma-timeline__item">
-                        <span class="luma-timeline__number" aria-hidden="true">7</span>
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 7">7</button>
                         <div class="luma-timeline__content">
                             <p class="luma-timeline__date">Diciembre 2026</p>
                             <h3>Lanzamiento LUMA y DemoDay</h3>
@@ -420,6 +421,15 @@
             </div>
         </div>
     </section>
+
+    <aside id="milestone-photo" class="luma-photo" popover="auto" aria-labelledby="milestone-photo-title">
+        <div class="luma-photo__card">
+            <button class="luma-photo__close" type="button" aria-label="Cerrar foto">×</button>
+            <img class="luma-photo__image" width="1280" height="960" alt="" hidden>
+            <div class="luma-photo__empty" hidden>Foto próximamente</div>
+            <p id="milestone-photo-title" class="luma-photo__caption"></p>
+        </div>
+    </aside>
 
     <!-- 6. SECCIÓN EQUIPO -->
     <section id="equipo" class="py-32 bg-white border-t border-gray-100 scroll-mt-20">
