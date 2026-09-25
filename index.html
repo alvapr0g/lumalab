@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luma Lab — Tecnología e Inteligencia Artificial desde el Sur de Chile</title>
     <link rel="stylesheet" href="assets/luma/luma.css">
+    <link rel="stylesheet" href="assets/luma/timeline.css">
     <script src="assets/luma/luma.js" defer></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +158,7 @@
                 </div>
             </div>
 
-            <!-- Hero Derecha (Nueva Ilustración de la Isla - Enlace Directo) -->
+            <!-- Hero Derecha (Ancho ajustado a 7 de 12 columnas para que la imagen sea más grande) -->
             <div class="luma-hero w-full relative flex justify-center lg:justify-end fade-in-up lg:col-span-7" style="animation-delay: 0.15s;">
                 <figure class="luma-morph" data-luma-morph>
                     <div class="luma-morph__scene" role="img" aria-label="Un brujo se transforma en una niña que aprende, una adolescente y una mujer que trabaja con inteligencia artificial. El paisaje de dragones del sur de Chile permanece inmóvil.">
@@ -337,129 +338,86 @@
         </div>
     </section>
 
-    <!-- 5. SECCIÓN HITOS (Timeline Horizontal / Vertical Móvil) -->
+    <!-- 5. SECCIÓN HITOS: una misma historia para escritorio y móvil -->
     <section id="comunidad" class="py-32 bg-white border-t border-gray-100 scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <h2 class="font-display font-bold text-4xl md:text-5xl text-ink mb-24">
-                El camino hasta acá
-            </h2>
+        <div class="luma-history">
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-ink">El camino hasta acá</h2>
+            <div class="luma-timeline">
+                <svg class="luma-timeline__snake" viewBox="0 0 1400 120" fill="none" aria-hidden="true" focusable="false">
+                    <!-- Un solo cuerpo de tinta, vientre blanco y trazos irregulares. -->
+                    <defs><clipPath id="timeline-snake-body"><path d="M5 60 C60 57 60 38 100 43 S230 85 300 62 S430 27 500 50 S630 87 700 62 S830 26 900 49 S1030 87 1100 62 S1230 25 1300 49 L1344 48 Q1359 34 1382 43 Q1398 50 1383 65 Q1365 80 1345 66 L1300 68 C1230 44 1170 58 1100 80 S970 85 900 67 S770 43 700 80 S570 84 500 68 S370 46 300 80 S160 77 100 58 S37 64 5 60Z"/></clipPath></defs>
+                    <path d="M5 60 C60 57 60 38 100 43 S230 85 300 62 S430 27 500 50 S630 87 700 62 S830 26 900 49 S1030 87 1100 62 S1230 25 1300 49 L1344 48 Q1359 34 1382 43 Q1398 50 1383 65 Q1365 80 1345 66 L1300 68 C1230 44 1170 58 1100 80 S970 85 900 67 S770 43 700 80 S570 84 500 68 S370 46 300 80 S160 77 100 58 S37 64 5 60Z" fill="white" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M28 60 C70 57 69 46 100 50 S230 91 300 71 S430 33 500 59 S630 94 700 71 S830 31 900 58 S1030 94 1100 71 S1230 34 1300 58 L1348 58" stroke="#111" stroke-width="1.2"/>
+                    <path clip-path="url(#timeline-snake-body)" d="M145 58l-5 10m30-3-5 10m30-1-4 9m163-22 5 10m21-17 5 10m21-16 4 10m166 15-4 10m29-3-4 9m31-3-4 10m164-27 5 10m22-17 5 10m21-16 4 10m166 15-4 10m29-3-4 9m31-3-4 10m163-27 5 10m22-17 5 10m21-16 4 10" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M1385 55l10 1m-1 0 4-4m-4 4 4 4M1352 65q15 5 23-3" stroke="#111" stroke-width="1.6" stroke-linecap="round"/>
+                    <circle cx="1370" cy="49" r="3" fill="#111"/>
+                    <circle cx="1371" cy="48" r=".8" fill="white"/>
+                </svg>
+                <ol class="luma-timeline__list" aria-label="Historia de LUMA Lab">
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">1</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Marzo – junio 2026</p>
+                            <h3>Mentorías de Proyectos Web</h3>
+                            <p>Ing. Civil en Informática ULagos</p>
+                            <p class="luma-timeline__people">(César y Víctor)</p>
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">2</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Junio 2026</p>
+                            <h3>Expo Ingenierías 2026 · ICINF ULagos</h3>
 
-            <!-- Contenedor del Timeline -->
-            <div class="relative w-full">
-                <!-- Línea de Conexión (Desktop: Horizontal, Móvil: Oculta) -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-ink -translate-y-1/2"></div>
-                
-                <!-- Timeline Desktop (Horizontal) -->
-                <div class="hidden md:grid grid-cols-5 gap-8 relative z-10">
-                    <!-- Hito 1 -->
-                    <div class="flex flex-col justify-between h-[320px]">
-                        <div class="pb-12">
-                            <span class="font-mono text-xs font-bold text-deepGreen">JUNIO 2026</span>
-                            <h4 class="font-display font-bold text-lg text-ink mt-2">Tomando cervezas</h4>
-                            <p class="text-sm text-mediumGray mt-1">Nos juntamos a repensar la tecnología desde el territorio.</p>
+                            <p class="luma-timeline__people">(César y Víctor)</p>
                         </div>
-                        <div class="relative flex justify-center">
-                            <div class="w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">3</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Julio 2026</p>
+                            <h3>Taller: “IA para Emprendedores”</h3>
+                            <p>Descubre cómo introducir la IA en tu negocio y qué procesos pueden ayudarte a automatizar.</p>
+                            <p class="luma-timeline__people">(Álvaro y Víctor)</p>
                         </div>
-                        <div class="pt-12 h-20"></div>
-                    </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">4</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Agosto 2026</p>
+                            <h3>Tomando cervezas</h3>
+                            <p>Nos juntamos a repensar la tecnología en el territorio.</p>
 
-                    <!-- Hito 2 (Invertido) -->
-                    <div class="flex flex-col justify-between h-[320px]">
-                        <div class="h-20 pb-12"></div>
-                        <div class="relative flex justify-center">
-                            <div class="w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
                         </div>
-                        <div class="pt-6">
-                            <span class="font-mono text-xs font-bold text-deepGreen">SEPTIEMBRE 2026</span>
-                            <h4 class="font-display font-bold text-lg text-ink mt-2">Nace LUMA</h4>
-                            <p class="text-sm text-mediumGray mt-1">Como una comunidad que aglomeré varios hitos.</p>
-                        </div>
-                    </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">5</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Septiembre 2026</p>
+                            <h3>Nace LUMA Lab</h3>
+                            <p>Una comunidad que busca ser un referente en el sur de Chile, en el uso responsable de tecnología e IAG.</p>
 
-                    <!-- Hito 3 -->
-                    <div class="flex flex-col justify-between h-[320px]">
-                        <div class="pb-12">
-                            <span class="font-mono text-xs font-bold text-deepGreen">OCT 2024</span>
-                            <h4 class="font-display font-bold text-lg text-ink mt-2">Señal Luma</h4>
-                            <p class="text-sm text-mediumGray mt-1">Lanzamiento oficial del podcast sobre desarrollo e innovación.</p>
                         </div>
-                        <div class="relative flex justify-center">
-                            <div class="w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
-                        </div>
-                        <div class="pt-12 h-20"></div>
-                    </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">6</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Octubre 2026</p>
+                            <h3>Hitos</h3>
+                            <p>Álvaro, César y Víctor, realizando charlas y talleres a la comunidad respecto a IAG aplicada en áreas de productividad y educación.</p>
 
-                    <!-- Hito 4 (Invertido) -->
-                    <div class="flex flex-col justify-between h-[320px]">
-                        <div class="h-20 pb-12"></div>
-                        <div class="relative flex justify-center">
-                            <div class="w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
                         </div>
-                        <div class="pt-6">
-                            <span class="font-mono text-xs font-bold text-deepGreen">MAR 2025</span>
-                            <h4 class="font-display font-bold text-lg text-ink mt-2">Valdivia Hack</h4>
-                            <p class="text-sm text-mediumGray mt-1">Maratón de prototipos ágiles aplicados a las problemáticas del agro.</p>
-                        </div>
-                    </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <span class="luma-timeline__number" aria-hidden="true">7</span>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Diciembre 2026</p>
+                            <h3>Lanzamiento LUMA y DemoDay</h3>
+                            <p>Lanzamiento oficial de la comunidad LUMA y participación en la DemoDay.</p>
 
-                    <!-- Hito 5 (Nodo Verde - Seguimos) -->
-                    <div class="flex flex-col justify-between h-[320px]">
-                        <div class="pb-12">
-                            <span class="font-mono text-xs font-bold text-deepGreen">ACTUALIDAD</span>
-                            <h4 class="font-display font-bold text-lg text-ink mt-2">500+ Miembros</h4>
-                            <p class="text-sm text-mediumGray mt-1">Una red activa en Slack que comparte conocimiento a diario.</p>
                         </div>
-                        <div class="relative flex justify-center">
-                            <div class="w-6 h-6 rounded-full bg-sageGreen border-4 border-white ring-2 ring-sageGreen flex items-center justify-center">
-                                <span class="w-2 h-2 rounded-full bg-deepGreen"></span>
-                            </div>
-                        </div>
-                        <div class="pt-12 h-20"></div>
-                    </div>
-                </div>
-
-                <!-- Timeline Mobile (Vertical) -->
-                <div class="block md:hidden relative border-l-2 border-ink pl-8 space-y-12">
-                    <!-- Nodo 1 -->
-                    <div class="relative">
-                        <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
-                        <span class="font-mono text-xs font-bold text-deepGreen">ENE 2024</span>
-                        <h4 class="font-display font-bold text-xl text-ink mt-1">Bajo la lluvia</h4>
-                        <p class="text-mediumGray mt-2">Idea original esbozada en Chiloé por tres profesionales del territorio.</p>
-                    </div>
-                    <!-- Nodo 2 -->
-                    <div class="relative">
-                        <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
-                        <span class="font-mono text-xs font-bold text-deepGreen">MAY 2024</span>
-                        <h4 class="font-display font-bold text-xl text-ink mt-1">Primer Encuentro</h4>
-                        <p class="text-mediumGray mt-2">Convocamos a más de 45 curiosos en Puerto Montt para hablar de LLMs.</p>
-                    </div>
-                    <!-- Nodo 3 -->
-                    <div class="relative">
-                        <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
-                        <span class="font-mono text-xs font-bold text-deepGreen">OCT 2024</span>
-                        <h4 class="font-display font-bold text-xl text-ink mt-1">Señal Luma</h4>
-                        <p class="text-mediumGray mt-2">Lanzamiento oficial del podcast sobre desarrollo e innovación.</p>
-                    </div>
-                    <!-- Nodo 4 -->
-                    <div class="relative">
-                        <div class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full bg-ink border-4 border-white ring-2 ring-ink"></div>
-                        <span class="font-mono text-xs font-bold text-deepGreen">MAR 2025</span>
-                        <h4 class="font-display font-bold text-xl text-ink mt-1">Valdivia Hack</h4>
-                        <p class="text-mediumGray mt-2">Maratón de prototipos ágiles aplicados a las problemáticas del agro.</p>
-                    </div>
-                    <!-- Nodo 5 -->
-                    <div class="relative">
-                        <div class="absolute -left-[42px] top-1.5 w-6 h-6 rounded-full bg-sageGreen border-4 border-white ring-2 ring-sageGreen flex items-center justify-center">
-                            <span class="w-2 h-2 rounded-full bg-deepGreen"></span>
-                        </div>
-                        <span class="font-mono text-xs font-bold text-xl text-ink mt-1">ACTUALIDAD</span>
-                        <h4 class="font-display font-bold text-xl text-ink mt-1">500+ Miembros</h4>
-                        <p class="text-mediumGray mt-2">Una red activa en Slack que comparte conocimiento a diario.</p>
-                    </div>
-                </div>
-
+                    </li>
+                </ol>
             </div>
         </div>
     </section>
@@ -489,6 +447,14 @@
                         <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
                             "Creo firmemente en que la inteligencia artificial más potente es la que se adapta a las economías locales."
                         </p>
+                        <div class="pt-4">
+                            <a href="https://www.linkedin.com/in/cesarantoniooyarzomunoz/" target="_blank" rel="noopener noreferrer" class="inline-block text-ink hover:text-deepGreen transition-colors" aria-label="LinkedIn de César Oyarzo">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -503,6 +469,14 @@
                         <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
                             "Conectar a las personas indicadas es el primer paso para crear proyectos tecnológicos con un verdadero sentido social."
                         </p>
+                        <div class="pt-4">
+                            <a href="https://www.linkedin.com/in/victor-saldivia-vera/" target="_blank" rel="noopener noreferrer" class="inline-block text-ink hover:text-deepGreen transition-colors" aria-label="LinkedIn de Víctor Saldivia">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -517,13 +491,11 @@
                         <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
                             "La estética y la simplicidad son críticas. Si el software no se entiende visualmente, no sirve en el mundo real."
                         </p>
-                        <!-- Enlace a LinkedIn con icono lineal de forma exclusiva -->
                         <div class="pt-4">
                             <a href="https://www.linkedin.com/in/ajsantana/" target="_blank" rel="noopener noreferrer" class="inline-block text-ink hover:text-deepGreen transition-colors" aria-label="LinkedIn de Álvaro Santana">
-                                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
                                 </svg>
                             </a>
                         </div>
