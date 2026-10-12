@@ -4,6 +4,9 @@
 #   main         nunca se pushea directo: entra solo por PR desde development.
 #   development  push directo solo si TODO lo que cambia es documentación
 #                (*.md o docs/**). El código entra por PR desde una rama propia.
+#
+# Guía completa y solución a cada mensaje:
+#   https://github.com/luma-lab-io/comunidad/blob/main/docs/sitio/flujo-de-ramas.md
 #   otras ramas  libre.
 
 set -euo pipefail
@@ -47,5 +50,10 @@ while read -r local_ref local_sha remote_ref remote_sha; do
       ;;
   esac
 done
+
+if [ "$fallo" -ne 0 ]; then
+  echo "" >&2
+  echo "Qué hacer con cada error: https://github.com/luma-lab-io/comunidad/blob/main/docs/sitio/flujo-de-ramas.md#errores-y-qué-hacer" >&2
+fi
 
 exit "$fallo"

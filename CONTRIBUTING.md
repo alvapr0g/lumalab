@@ -1,5 +1,8 @@
 # Cómo se trabaja en el sitio
 
+> Guía completa, con la solución a cada mensaje de error del hook, de GitHub y de los checks:
+> [comunidad/docs/sitio/flujo-de-ramas.md](https://github.com/luma-lab-io/comunidad/blob/main/docs/sitio/flujo-de-ramas.md) (repo privado del equipo).
+
 El sitio de Luma Lab es HTML estático publicado en Firebase Hosting (proyecto
 `luma-labs-comunity`). Hay dos ambientes y cada uno tiene su rama.
 
