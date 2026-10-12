@@ -22,6 +22,7 @@ jobs:
         run: |
           if [ "${{ github.head_ref }}" != "development" ]; then
             echo "::error::A main solo se llega desde development (este PR sale de '${{ github.head_ref }}')."
+            echo "::error::Guía: https://github.com/luma-lab-io/comunidad/blob/main/docs/sitio/flujo-de-ramas.md#check-pr-a-main-desde-development-en-rojo"
             exit 1
           fi
 
@@ -55,4 +56,7 @@ jobs:
               fallo=1
             fi
           done
+          if [ "$fallo" -ne 0 ]; then
+            echo "::error::Guía: https://github.com/luma-lab-io/comunidad/blob/main/docs/sitio/flujo-de-ramas.md#check-push-directo-solo-doc-en-rojo"
+          fi
           exit "$fallo"
