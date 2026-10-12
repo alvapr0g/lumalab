@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "luma-labs-comunity",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".git",
+      ".git/**",
+      "**/.*"
+    ],
+    "cleanUrls": true
+  }
+}
