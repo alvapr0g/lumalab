@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "luma-labs-comunity"
+  },
+  "targets": {
+    "luma-labs-comunity": {
+      "hosting": {
+        "prod": ["luma-labs-comunity"],
+        "dev": ["luma-labs-comunity-dev"]
+      }
+    }
   }
 }

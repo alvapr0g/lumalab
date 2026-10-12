@@ -1,0 +1,58 @@
+# Control de ramas en el servidor (el hook pre-push se puede saltar con --no-verify).
+#   PR a main: solo desde development.
+#   Push a development: si el commit no viene de un PR, solo puede traer documentación.
+name: ramas
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [development]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  pr-a-main-desde-development:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: El PR a main sale de development
+        run: |
+          if [ "${{ github.head_ref }}" != "development" ]; then
+            echo "::error::A main solo se llega desde development (este PR sale de '${{ github.head_ref }}')."
+            exit 1
+          fi
+
+  push-directo-solo-doc:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Commits directos solo con documentación
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            rango="origin/main..$AFTER"
+          else
+            rango="$BEFORE..$AFTER"
+          fi
+          fallo=0
+          for sha in $(git rev-list --no-merges "$rango"); do
+            prs=$(gh api "repos/${{ github.repository }}/commits/$sha/pulls" --jq 'map(select(.merged_at != null)) | length')
+            [ "$prs" -gt 0 ] && continue
+            codigo=$(git diff-tree --no-commit-id --name-only -r "$sha" | grep -v -E '(\.md$|^docs/)' || true)
+            if [ -n "$codigo" ]; then
+              echo "::error::El commit $sha entró directo a development (sin PR) y trae código:"
+              echo "$codigo" | sed 's/^/  - /'
+              fallo=1
+            fi
+          done
+          exit "$fallo"

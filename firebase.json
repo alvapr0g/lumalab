@@ -1,14 +1,40 @@
 {
-  "hosting": {
-    "site": "luma-labs-comunity",
-    "public": ".",
-    "ignore": [
-      "firebase.json",
-      ".firebaserc",
-      ".git",
-      ".git/**",
-      "**/.*"
-    ],
-    "cleanUrls": true
-  }
+  "hosting": [
+    {
+      "target": "prod",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        ".firebaserc",
+        "**/.*",
+        "**/.*/**",
+        "**/node_modules/**",
+        "**/*.md",
+        "docs/**",
+        "scripts/**"
+      ],
+      "cleanUrls": true
+    },
+    {
+      "target": "dev",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        ".firebaserc",
+        "**/.*",
+        "**/.*/**",
+        "**/node_modules/**",
+        "**/*.md",
+        "docs/**",
+        "scripts/**"
+      ],
+      "cleanUrls": true,
+      "headers": [
+        {
+          "source": "**",
+          "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+        }
+      ]
+    }
+  ]
 }
