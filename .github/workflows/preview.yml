@@ -1,0 +1,27 @@
+# Cada PR recibe un link temporal (7 días) en un canal del sitio de dev.
+# El link queda comentado en el PR y se actualiza con cada push a la rama.
+name: preview
+
+on:
+  pull_request:
+    paths-ignore: ["**/*.md", "docs/**"]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  preview:
+    # Los PR desde forks no tienen acceso al secret.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LUMA_LABS_COMUNITY }}
+          projectId: luma-labs-comunity
+          target: dev
+          expires: 7d
