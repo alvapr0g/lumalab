@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUMA · Cuenta regresiva</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--forest:#4a6b3a;--gray:#5a5a5a}*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Inter,sans-serif;background:#fff}.background{position:fixed;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);border:0;filter:blur(12px);pointer-events:none}.veil{position:fixed;inset:0;background:rgba(255,255,255,.60);backdrop-filter:blur(5px)}main{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:48px 24px}.content{width:100%;max-width:960px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:32px}.brand{display:flex;align-items:center;gap:8px;font:800 24px Poppins,sans-serif}.brand span{font:12px 'Roboto Mono',monospace;letter-spacing:2px;color:var(--forest)}.overline{font:12px 'Roboto Mono',monospace;letter-spacing:2px;color:var(--forest);margin:0 0 16px}h1{font:700 clamp(32px,4vw,48px)/1.18 Poppins,sans-serif;margin:0 0 16px;letter-spacing:-1.5px}.subtitle{color:var(--gray);font-size:16px;line-height:1.6;margin:0}.timer{display:flex;align-items:center;gap:16px}.unit{width:164px;height:180px;border:1px solid rgba(255,255,255,.85);border-radius:16px;background:rgba(255,255,255,.72);backdrop-filter:blur(20px);box-shadow:0 8px 24px #00000012;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.value{font:800 68px/1.15 Poppins,sans-serif;font-variant-numeric:tabular-nums}.label{font:12px 'Roboto Mono',monospace;color:var(--gray);letter-spacing:2px}.colon{font:700 24px Poppins,sans-serif;color:var(--gray)}.date{color:var(--forest);font-size:14px;line-height:1.6;margin:0}.button{display:inline-flex;align-items:center;justify-content:center;background:#111;color:white;text-decoration:none;padding:15px 28px;border-radius:999px;font-size:14px;font-weight:600;transition:background .2s}.button:hover{background:var(--forest)}.button:focus-visible{outline:3px solid #9cc178;outline-offset:4px}.note{font-size:12px;line-height:1.5;color:var(--gray);margin:0}.details{display:flex;flex-direction:column;align-items:center;gap:16px}#status:empty{display:none}
+@media(max-width:600px){.background{display:none}body{background:white url('assets/luma/landscape.webp') center/cover fixed}.veil{backdrop-filter:blur(8px);background:rgba(255,255,255,.40)}main{padding:48px 24px}.content{gap:32px}.timer{width:100%;max-width:342px;gap:8px}.unit{width:calc((100% - 24px)/4);height:106px;flex-shrink:0}.value{font-size:44px}.label{font-size:9px;letter-spacing:1px}.colon{display:none}h1{max-width:340px;font-size:36px}.subtitle{max-width:320px}.overline{font-size:11px}.date{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.button{transition:none}}
+</style>
+<style>.button[aria-disabled="true"]{background:#d1d5db;color:#5a5a5a;cursor:not-allowed;box-shadow:none}.button[aria-disabled="true"]:hover{background:#d1d5db}</style>
+</head>
+<body>
+<iframe class="background" src="landing.html" title="Landing de LUMA como fondo" tabindex="-1" aria-hidden="true"></iframe>
+<div class="veil" aria-hidden="true"></div>
+<main><section class="content" aria-labelledby="title">
+<div class="brand">LUMA <span>LAB</span></div>
+<header><p class="overline">EL SUR SE ENCUENTRA</p><h1 id="title">Algo nuevo está en camino</h1><p class="subtitle">Estamos construyendo una comunidad para profesionales de TI enfocada en el uso ético y responsable de la Inteligencia Artificial Generativa. Un espacio para compartir buenas prácticas, casos reales y aprender en conjunto.</p></header>
+<div class="timer" role="timer" aria-label="Tiempo restante para el encuentro" aria-live="off">
+<div class="unit"><span class="value" id="days">--</span><span class="label">DÍAS</span></div><span class="colon" aria-hidden="true">:</span>
+<div class="unit"><span class="value" id="hours">--</span><span class="label">HORAS</span></div><span class="colon" aria-hidden="true">:</span>
+<div class="unit"><span class="value" id="minutes">--</span><span class="label">MINUTOS</span></div><span class="colon" aria-hidden="true">:</span>
+<div class="unit"><span class="value" id="seconds">--</span><span class="label">SEGUNDOS</span></div>
+</div>
+<div class="details"><p class="date"><strong>15 de diciembre de 2026 · 12:00 hrs</strong><br>Hora de Chile · America/Santiago</p><a id="discover" class="button" role="link" aria-disabled="true" tabindex="-1">Conoce LUMA</a><p class="note" id="availability">Disponible el 15 de diciembre · 12:00 hrs</p><p id="status" role="status"></p></div>
+</section></main>
+<script>
+const target=Date.parse('2026-12-15T12:00:00-03:00');
+function update(now=Date.now()){
+ const remaining=Math.max(0,Math.floor((target-now)/1000));
+ const parts={days:Math.floor(remaining/86400),hours:Math.floor(remaining/3600)%24,minutes:Math.floor(remaining/60)%60,seconds:remaining%60};
+ for(const [key,value] of Object.entries(parts))document.getElementById(key).textContent=String(value).padStart(2,'0');
+ const link=document.getElementById('discover');
+ if(now>=target){link.href='landing.html';link.removeAttribute('aria-disabled');link.removeAttribute('tabindex');document.getElementById('title').textContent='¡Ya comenzamos!';document.getElementById('status').textContent='Llegó el día del encuentro LUMA.';document.getElementById('availability').textContent='Ya puedes conocer LUMA.';}
+ else{link.removeAttribute('href');link.setAttribute('aria-disabled','true');link.setAttribute('tabindex','-1');}
+ return parts;
+}
+update();setInterval(()=>update(),1000);
+</script>
+</body></html>

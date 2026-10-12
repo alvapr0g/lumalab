@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luma Lab — Tecnología e Inteligencia Artificial desde el Sur de Chile</title>
+    <link rel="stylesheet" href="assets/luma/luma.css?v=20260925-auto">
+    <link rel="stylesheet" href="assets/luma/timeline.css?v=photos-2">
+    <script src="assets/luma/luma.js?v=20260925-auto" defer></script>
+    <script src="assets/luma/i18n.js?v=2" defer></script>
+    <script src="assets/luma/timeline.js?v=language-1" defer></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#111111',
+                        mediumGray: '#5A5A5A',
+                        sageGreen: '#9CC178',
+                        deepGreen: '#4A6B3A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilo editorial y delineado interactivo */
+        .outline-letter {
+            -webkit-text-stroke: 3px #111111;
+            color: transparent;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+        }
+        /* Ajuste de scrollbar minimalista */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #111111;
+            border-radius: 9999px;
+        }
+        /* Animación de aparición */
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-ink font-sans selection:bg-sageGreen selection:text-ink overflow-x-hidden">
+
+    <!-- FILTROS SVG GLOBALES -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <defs>
+            <!-- Filtro para deformar sutilmente los trazos y que parezcan hechos a mano -->
+            <filter id="handdrawn" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <!-- Filtro para el sangrado de la acuarela verde -->
+            <filter id="watercolor-wash" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- 1. HEADER (Fijo, blanco, sin sombra) -->
+    <header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+            <!-- Logo + Wordmark -->
+            <a href="#" class="flex items-center gap-3 group" aria-label="Luma Lab Inicio">
+                <!-- Imagen del Logo Hexagonal desde Postimg con rotación suave interactiva -->
+                <img src="assets/luma/logo.png" alt="Logo Luma Lab" class="h-9 w-auto object-contain transition-transform duration-500 group-hover:rotate-12 select-none">
+                <span class="font-display font-extrabold text-2xl tracking-tight text-ink">Luma Lab</span>
+            </a>
+
+            <!-- Navegación Desktop -->
+            <nav class="hidden xl:flex items-center gap-5 text-sm font-medium text-mediumGray">
+                <a href="#metodologia" class="hover:text-ink transition-colors">Nuestra Filosofía</a>
+                <a href="#programas" class="hover:text-ink transition-colors">Programas</a>
+                <a href="#comunidad" class="hover:text-ink transition-colors">Nuestro camino</a>
+                <a href="#podcast" class="hover:text-ink transition-colors">Recursos</a>
+                <a href="#equipo" class="hover:text-ink transition-colors">Nosotros</a>
+            </nav>
+
+            <!-- CTA Botón -->
+            <div class="flex items-center gap-3">
+                <a href="#cta" class="hidden xl:inline-block bg-ink text-white hover:bg-deepGreen rounded-full px-6 py-3 font-semibold text-sm transition-colors duration-300">
+                    Súmate a la comunidad
+                </a>
+                <select id="language-select" aria-label="Idioma" class="relative z-50 rounded-full border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-ink focus:outline focus:outline-2 focus:outline-deepGreen">
+                    <option value="es" lang="es">🇨🇱 Español</option>
+                    <option value="en" lang="en">🇬🇧 English</option>
+                </select>
+
+            <!-- Botón Menú Hamburguesa (Móvil) -->
+            <button id="menu-btn" class="xl:hidden flex flex-col gap-1.5 focus:outline-none z-50" aria-label="Abrir menú">
+                <span class="w-6 h-0.5 bg-ink transition-transform duration-300" id="bar1"></span>
+                <span class="w-6 h-0.5 bg-ink transition-opacity duration-300" id="bar2"></span>
+                <span class="w-6 h-0.5 bg-ink transition-transform duration-300" id="bar3"></span>
+            </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center px-8 space-y-8 text-2xl font-bold font-display">
+            <a href="#metodologia" class="mobile-link text-ink hover:text-deepGreen">Nuestra Filosofía</a>
+            <a href="#programas" class="mobile-link text-ink hover:text-deepGreen">Programas</a>
+            <a href="#comunidad" class="mobile-link text-ink hover:text-deepGreen">Nuestro camino</a>
+            <a href="#podcast" class="mobile-link text-ink hover:text-deepGreen">Recursos</a>
+            <a href="#equipo" class="mobile-link text-ink hover:text-deepGreen">Nosotros</a>
+            <a href="#cta" class="mobile-link inline-block bg-ink text-white text-center hover:bg-deepGreen rounded-full py-4 text-lg font-semibold transition-colors">
+                Súmate a la comunidad
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="pt-32 pb-24 md:pt-40 md:pb-24 max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            <!-- Hero Izquierda (Ancho ajustado a 5 de 12 columnas) -->
+            <div class="space-y-8 fade-in-up lg:col-span-5">
+                <h1 class="font-display font-extrabold text-[44px] md:text-[60px] lg:text-[68px] leading-[1.05] text-ink tracking-tight">
+                    Tecnología<br>que nace en<br>el sur<br>y llega al<br>mundo.
+                </h1>
+                <p class="text-lg md:text-xl text-mediumGray max-w-[440px] leading-relaxed">
+                    Somos el espacio donde se aprende, se debate y se construye con Tecnología desde el sur de Chile. Uniendo a las personas y nuestro territorio a través de diversas actividades.
+                </p>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                    <a href="#cta" class="bg-ink text-white hover:bg-deepGreen text-center px-8 py-4 rounded-full font-semibold text-lg transition-colors duration-300">
+                        Quiero participar
+                    </a>
+                    <a href="#metodologia" class="text-ink hover:text-deepGreen text-center font-bold border-b-2 border-ink hover:border-deepGreen py-2 transition-all duration-300">
+                        Conoce nuestra filosofía
+                    </a>
+                </div>
+                <div class="pt-4">
+                    <p class="text-xs tracking-[0.2em] font-semibold text-gray-400 uppercase font-mono">
+                        Local · United · Minds · AI
+                    </p>
+                </div>
+            </div>
+
+            <!-- Hero Derecha (Ancho ajustado a 7 de 12 columnas para que la imagen sea más grande) -->
+            <div class="luma-hero w-full relative flex justify-center lg:justify-end fade-in-up lg:col-span-7" style="animation-delay: 0.15s;">
+                <figure class="luma-morph" data-luma-morph>
+                    <div class="luma-morph__scene" role="img" aria-label="Un brujo se transforma en una niña que aprende, una adolescente y una mujer que trabaja con inteligencia artificial. El paisaje de dragones del sur de Chile permanece inmóvil.">
+                        <img class="luma-morph__background" src="assets/luma/landscape.webp" width="1100" height="1143" alt="" fetchpriority="high" decoding="async">
+                        <img class="luma-morph__character luma-morph__character--wizard" data-src="assets/luma/wizard.webp" alt="" decoding="async">
+                        <img class="luma-morph__character" data-src="assets/luma/child.webp" alt="" decoding="async">
+                        <img class="luma-morph__character" data-src="assets/luma/teen.webp" alt="" decoding="async">
+                        <img class="luma-morph__character luma-morph__character--adult" src="assets/luma/adult.webp" alt="" decoding="async">
+                        <span class="luma-morph__glow" aria-hidden="true"></span>
+                    </div>
+                </figure>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN FILOSOFÍA LUMA -->
+    <section id="metodologia" class="py-32 bg-white border-t border-gray-100 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-ink mb-16">
+                La Filosofía LUMA
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- L - Local -->
+                <div class="relative pl-6 border-l-2 border-gray-100 hover:border-sageGreen transition-colors duration-300 py-4">
+                    <span class="outline-letter text-8xl block select-none">L</span>
+                    <h3 class="font-display font-bold text-2xl text-ink uppercase tracking-wide mt-2">Local</h3>
+                    <p class="text-mediumGray mt-3 text-base leading-relaxed">
+                        Entender la teoría y las herramientas a fondo desde nuestro territorio.
+                    </p>
+                </div>
+                
+                <!-- U - United -->
+                <div class="relative pl-6 border-l-2 border-gray-100 hover:border-sageGreen transition-colors duration-300 py-4">
+                    <span class="outline-letter text-8xl block select-none">U</span>
+                    <h3 class="font-display font-bold text-2xl text-ink uppercase tracking-wide mt-2">United</h3>
+                    <p class="text-mediumGray mt-3 text-base leading-relaxed">
+                        Unidos en todas las capas: academia, industria y territorio.
+                    </p>
+                </div>
+
+                <!-- M - Minds -->
+                <div class="relative pl-6 border-l-2 border-gray-100 hover:border-sageGreen transition-colors duration-300 py-4">
+                    <span class="outline-letter text-8xl block select-none">M</span>
+                    <h3 class="font-display font-bold text-2xl text-ink uppercase tracking-wide mt-2">Minds</h3>
+                    <p class="text-mediumGray mt-3 text-base leading-relaxed">
+                        Filosofía, ética nos mueve al igual que lo técnico.
+                    </p>
+                </div>
+
+                <!-- A - AI -->
+                <div class="relative pl-6 border-l-2 border-gray-100 hover:border-sageGreen transition-colors duration-300 py-4">
+                    <span class="outline-letter text-8xl block select-none">A</span>
+                    <h3 class="font-display font-bold text-2xl text-ink uppercase tracking-wide mt-2">AI</h3>
+                    <p class="text-mediumGray mt-3 text-base leading-relaxed">
+                        Inteligencia Artificial como medio para resolver problemas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN ¿QUÉ HACEMOS? -->
+    <section id="programas" class="py-32 bg-white border-t border-gray-100 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="max-w-2xl mb-20">
+                <h2 class="font-display font-bold text-4xl md:text-5xl text-ink">
+                    Construir tecnología desde el territorio
+                </h2>
+                <p class="text-lg text-mediumGray mt-4">
+                    No teorizamos desde lejos. Diseñamos espacios de encuentro y desarrollo adaptados a las dinámicas del sur de Chile.
+                </p>
+            </div>
+
+            <!-- Grid 3x2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+                
+                <!-- Tarjeta 1 -->
+                <div class="space-y-4">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20 50 Q 30 20 60 30 Q 90 40 70 70 Q 40 90 20 50 Z" fill="#9CC178" />
+                        </svg>
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-ink">Talleres de IA</h3>
+                    <p class="text-mediumGray text-base leading-relaxed">
+                        Capacitación aplicada para que creadores, profesionales y técnicos incorporen IA en su flujo diario de trabajo, sin tecnicismos innecesarios.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="space-y-4">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 30 40 Q 50 10 80 30 Q 90 60 60 80 Q 20 70 30 40 Z" fill="#9CC178" />
+                        </svg>
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-ink">Conversatorios</h3>
+                    <p class="text-mediumGray text-base leading-relaxed">
+                        Debates y mesas redondas abiertas a la comunidad para abordar de forma crítica el impacto ético y social del desarrollo tecnológico.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="space-y-4">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 25 30 Q 60 20 80 50 Q 70 80 40 75 Q 10 60 25 30 Z" fill="#9CC178" />
+                        </svg>
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-ink">Talleres a escuelas</h3>
+                    <p class="text-mediumGray text-base leading-relaxed">
+                        Maratones de diseño y programación colaborativa orientadas a resolver desafíos específicos de las comunidades locales en tiempo récord.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="space-y-4">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 40 20 Q 80 30 70 60 Q 60 90 30 70 Q 10 40 40 20 Z" fill="#9CC178" />
+                        </svg>
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-ink">Comunidad</h3>
+                    <p class="text-mediumGray text-base leading-relaxed">
+                        Un espacio activo para compartir recursos, resolver dudas y encontrar colaboradores en proyectos independientes fuera de la gran urbe.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="space-y-4" id="podcast">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20 40 Q 50 20 70 40 Q 80 70 50 80 Q 10 60 20 40 Z" fill="#9CC178" />
+                        </svg>
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-ink">Señal LUMA</h3>
+                    <p class="text-mediumGray text-base leading-relaxed">
+                        Nuestro canal auditivo. Conversamos con creadores, ingenieros y científicos que están repensando los límites tecnológicos desde Chile.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="space-y-4">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-80" filter="url(#watercolor-wash)" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 30 30 Q 70 10 80 40 Q 90 70 50 60 Q 20 50 30 30 Z" fill="#9CC178" />
+                        </svg>
+                        <svg class="relative w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" filter="url(#handdrawn)">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-ink">Proyectos</h3>
+                    <p class="text-mediumGray text-base leading-relaxed">
+                        Acompañamos a organizaciones territoriales en la transición hacia la automatización lógica, con un enfoque sostenible y localizado.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN HITOS: una misma historia para escritorio y móvil -->
+    <section id="comunidad" class="py-32 bg-white border-t border-gray-100 scroll-mt-20">
+        <div class="luma-history">
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-ink">El camino hasta acá</h2>
+            <div class="luma-timeline">
+                <svg class="luma-timeline__snake" viewBox="0 0 1400 120" fill="none" aria-hidden="true" focusable="false">
+                    <!-- Un solo cuerpo de tinta, vientre blanco y trazos irregulares. -->
+                    <defs><clipPath id="timeline-snake-body"><path d="M5 60 C60 57 60 38 100 43 S230 85 300 62 S430 27 500 50 S630 87 700 62 S830 26 900 49 S1030 87 1100 62 S1230 25 1300 49 L1344 48 Q1359 34 1382 43 Q1398 50 1383 65 Q1365 80 1345 66 L1300 68 C1230 44 1170 58 1100 80 S970 85 900 67 S770 43 700 80 S570 84 500 68 S370 46 300 80 S160 77 100 58 S37 64 5 60Z"/></clipPath></defs>
+                    <path d="M5 60 C60 57 60 38 100 43 S230 85 300 62 S430 27 500 50 S630 87 700 62 S830 26 900 49 S1030 87 1100 62 S1230 25 1300 49 L1344 48 Q1359 34 1382 43 Q1398 50 1383 65 Q1365 80 1345 66 L1300 68 C1230 44 1170 58 1100 80 S970 85 900 67 S770 43 700 80 S570 84 500 68 S370 46 300 80 S160 77 100 58 S37 64 5 60Z" fill="white" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M28 60 C70 57 69 46 100 50 S230 91 300 71 S430 33 500 59 S630 94 700 71 S830 31 900 58 S1030 94 1100 71 S1230 34 1300 58 L1348 58" stroke="#111" stroke-width="1.2"/>
+                    <path clip-path="url(#timeline-snake-body)" d="M145 58l-5 10m30-3-5 10m30-1-4 9m163-22 5 10m21-17 5 10m21-16 4 10m166 15-4 10m29-3-4 9m31-3-4 10m164-27 5 10m22-17 5 10m21-16 4 10m166 15-4 10m29-3-4 9m31-3-4 10m163-27 5 10m22-17 5 10m21-16 4 10" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M1385 55l10 1m-1 0 4-4m-4 4 4 4M1352 65q15 5 23-3" stroke="#111" stroke-width="1.6" stroke-linecap="round"/>
+                    <circle cx="1370" cy="49" r="3" fill="#111"/>
+                    <circle cx="1371" cy="48" r=".8" fill="white"/>
+                </svg>
+                <ol class="luma-timeline__list" aria-label="Historia de LUMA Lab">
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 1">1</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Marzo – junio 2026</p>
+                            <h3>Mentorías de Proyectos Web</h3>
+                            <p>Ing. Civil en Informática ULagos</p>
+                            <p class="luma-timeline__people">(César y Víctor)</p>
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 2" data-photo="assets/luma/hitos/expo-ingenierias-2026.jpg" data-photo-alt="Participantes de la Expo Ingenierías 2026 reunidos junto a las letras de ULagos">2</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Junio 2026</p>
+                            <h3>Expo Ingenierías 2026 · ICINF ULagos</h3>
+
+                            <p class="luma-timeline__people">(César y Víctor)</p>
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 3" data-photo-width="1280" data-photo-height="720" data-photo="assets/luma/hitos/taller-ia-emprendedores-2026.jpg" data-photo-alt="Participantes del taller IA para Emprendedores reunidos en una escalera">3</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Julio 2026</p>
+                            <h3>Taller: “IA para Emprendedores”</h3>
+                            <p>Descubre cómo introducir la IA en tu negocio y qué procesos pueden ayudarte a automatizar.</p>
+                            <p class="luma-timeline__people">(Álvaro y Víctor)</p>
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 4" data-photo="assets/luma/hitos/tomando-cervezas-2026.jpg" data-photo-alt="Encuentro para conversar sobre tecnología en el territorio">4</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Agosto 2026</p>
+                            <h3>Tomando cervezas</h3>
+                            <p>Nos juntamos a repensar la tecnología en el territorio.</p>
+
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 5" data-photo-width="960" data-photo-height="1280" data-photo="assets/luma/hitos/nace-luma-lab-2026.jpg" data-photo-alt="Encuentro de los tres fundadores de LUMA Lab alrededor de una mesa">5</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Septiembre 2026</p>
+                            <h3>Nace LUMA Lab</h3>
+                            <p>Una comunidad que busca ser un referente en el sur de Chile, en el uso responsable de tecnología e IAG.</p>
+
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 6">6</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Octubre 2026</p>
+                            <h3>Hitos</h3>
+                            <p>Álvaro, César y Víctor, realizando charlas y talleres a la comunidad respecto a IAG aplicada en áreas de productividad y educación.</p>
+
+                        </div>
+                    </li>
+                    <li class="luma-timeline__item">
+                        <button class="luma-timeline__number" type="button" aria-expanded="false" aria-controls="milestone-photo" aria-label="Ver foto del hito 7">7</button>
+                        <div class="luma-timeline__content">
+                            <p class="luma-timeline__date">Diciembre 2026</p>
+                            <h3>Lanzamiento LUMA y DemoDay</h3>
+                            <p>Lanzamiento oficial de la comunidad LUMA y participación en la DemoDay.</p>
+
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <aside id="milestone-photo" class="luma-photo" popover="auto" aria-labelledby="milestone-photo-title">
+        <div class="luma-photo__card">
+            <button class="luma-photo__close" type="button" aria-label="Cerrar foto">×</button>
+            <img class="luma-photo__image" width="1280" height="960" alt="" hidden>
+            <div class="luma-photo__empty" hidden>Foto próximamente</div>
+            <p id="milestone-photo-title" class="luma-photo__caption"></p>
+        </div>
+    </aside>
+
+    <!-- 6. SECCIÓN EQUIPO -->
+    <section id="equipo" class="py-32 bg-white border-t border-gray-100 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="max-w-2xl mb-20">
+                <h2 class="font-display font-bold text-4xl md:text-5xl text-ink">
+                    ¿Quiénes somos?
+                </h2>
+                <p class="text-lg text-mediumGray mt-4">
+                    Tres mentes inquietas que decidieron dejar de esperar que las cosas pasen en Santiago para construirlas directamente desde el sur.
+                </p>
+            </div>
+
+            <!-- Grid 3 columnas para integrantes -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Miembro 1 (César Oyarzo) -->
+                <div class="space-y-6">
+                    <div class="aspect-square bg-[#F9F9F9] relative flex items-center justify-center overflow-hidden border border-gray-100 rounded-2xl">
+                        <img src="https://i.postimg.cc/7YnVTF8H/Gemini-Generated-Image-blnq3qblnq3qblnq.jpg" alt="Retrato de César Oyarzo" class="w-full h-full object-cover select-none">
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-2xl text-ink">César Oyarzo</h4>
+                        <p class="text-sm font-semibold text-deepGreen">Founder</p>
+                        <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
+                            "Creo firmemente en que la inteligencia artificial más potente es la que se adapta a las economías locales."
+                        </p>
+                        <div class="pt-4">
+                            <a href="https://www.linkedin.com/in/cesarantoniooyarzomunoz/" target="_blank" rel="noopener noreferrer" class="inline-block text-ink hover:text-deepGreen transition-colors" aria-label="LinkedIn de César Oyarzo">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 2 (Víctor Saldivia) -->
+                <div class="space-y-6">
+                    <div class="aspect-square bg-[#F9F9F9] relative flex items-center justify-center overflow-hidden border border-gray-100 rounded-2xl">
+                        <img src="https://i.postimg.cc/8P4RCLMP/Gemini-Generated-Image-bthu6ybthu6ybthu.jpg" alt="Retrato de Víctor Saldivia" class="w-full h-full object-cover select-none">
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-2xl text-ink">Víctor Saldivia</h4>
+                        <p class="text-sm font-semibold text-deepGreen">Founder</p>
+                        <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
+                            "Conectar a las personas indicadas es el primer paso para crear proyectos tecnológicos con un verdadero sentido social."
+                        </p>
+                        <div class="pt-4">
+                            <a href="https://www.linkedin.com/in/victor-saldivia-vera/" target="_blank" rel="noopener noreferrer" class="inline-block text-ink hover:text-deepGreen transition-colors" aria-label="LinkedIn de Víctor Saldivia">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 3 (Álvaro Santana) -->
+                <div class="space-y-6">
+                    <div class="aspect-square bg-[#F9F9F9] relative flex items-center justify-center overflow-hidden border border-gray-100 rounded-2xl">
+                        <img src="https://i.postimg.cc/MpwFC0xZ/Gemini-Generated-Image-m2alpem2alpem2al.jpg" alt="Retrato de Álvaro Santana" class="w-full h-full object-cover select-none">
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-2xl text-ink">Álvaro Santana</h4>
+                        <p class="text-sm font-semibold text-deepGreen">Founder</p>
+                        <p class="text-mediumGray italic mt-4 text-base leading-relaxed">
+                            "La estética y la simplicidad son críticas. Si el software no se entiende visualmente, no sirve en el mundo real."
+                        </p>
+                        <div class="pt-4">
+                            <a href="https://www.linkedin.com/in/ajsantana/" target="_blank" rel="noopener noreferrer" class="inline-block text-ink hover:text-deepGreen transition-colors" aria-label="LinkedIn de Álvaro Santana">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. CTA FINAL (Bloque Negro, Ancho Completo) -->
+    <section id="cta" class="relative bg-ink text-white py-32 overflow-hidden">
+        <!-- Serpientes Marinas Mitológicas Detrás -->
+        <div class="absolute right-0 bottom-0 top-0 w-full lg:w-1/2 opacity-15 pointer-events-none select-none flex items-center justify-end">
+            <svg viewBox="0 0 400 400" class="w-full max-w-[450px] h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#handdrawn)">
+                    <!-- Serpiente Caicai (Izquierda, oscura, emerge de ondas) -->
+                    <path d="M 80 320 C 60 270 100 230 140 210 Q 180 190 170 140 C 160 100 120 110 110 80 Q 100 50 130 30" />
+                    <!-- Escamas representadas en trazo suelto -->
+                    <path d="M 130 180 Q 140 170 150 180" />
+                    <path d="M 120 150 Q 130 140 140 150" />
+                    <!-- Serpiente Trentren (Derecha, clara, emerge) -->
+                    <path d="M 320 320 C 340 270 300 230 260 210 Q 220 190 230 140 C 240 100 280 110 290 80 Q 300 50 270 30" />
+                    <path d="M 270 180 Q 260 170 250 180" />
+                    <path d="M 280 150 Q 270 140 260 150" />
+                    <!-- Ondas del agua -->
+                    <path d="M 50 320 C 150 340 250 340 350 320" />
+                    <path d="M 100 340 C 180 355 220 355 300 340" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="max-w-3xl space-y-8">
+                <h2 class="font-display font-extrabold text-[40px] md:text-[64px] leading-tight tracking-tight">
+                    El sur también construye el futuro.
+                </h2>
+                <!-- Texto descriptivo actualizado con la frase requerida -->
+                <p class="text-lg md:text-xl text-gray-300 max-w-[560px] leading-relaxed">
+                    Creemos en una red descentralizada de conocimiento tecnológico. Únete hoy a nuestro canales y sé parte de la conversación activa y los eventos mensuales en el territorio.
+                </p>
+                <div class="pt-4">
+                    <a href="https://slack.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-ink hover:bg-sageGreen rounded-full px-8 py-4 font-semibold text-lg transition-colors duration-300">
+                        Súmate a la comunidad
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="bg-white border-t border-gray-100 py-20 text-mediumGray">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12">
+            
+            <!-- Logo / Columna 1 -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <img src="assets/luma/logo.png" alt="Logo Luma Lab" class="h-9 w-auto object-contain select-none">
+                    <span class="font-display font-extrabold text-2xl tracking-tight text-ink">Luma Lab</span>
+                </div>
+                <p class="text-sm leading-relaxed max-w-[240px]">
+                    Comunidad autogestionada para la formación y desarrollo en Inteligencia Artificial y tecnologías emergentes.
+                </p>
+            </div>
+
+            <!-- Navegación / Columna 2 -->
+            <div class="space-y-4">
+                <h4 class="font-display font-bold text-ink uppercase tracking-wider text-xs">Secciones</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#metodologia" class="hover:text-ink transition-colors">Filosofía LUMA</a></li>
+                    <li><a href="#programas" class="hover:text-ink transition-colors">Programas</a></li>
+                    <li><a href="#comunidad" class="hover:text-ink transition-colors">Nuestro camino</a></li>
+                    <li><a href="#podcast" class="hover:text-ink transition-colors">Recursos</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto / Columna 3 -->
+            <div class="space-y-4">
+                <h4 class="font-display font-bold text-ink uppercase tracking-wider text-xs">Iniciativa</h4>
+                <p class="text-sm leading-relaxed">
+                    ¿Quieres colaborar con nosotros u organizar un conversatorio en tu localidad?<br>
+                    <a href="mailto:hola@lumalab.cl" class="font-bold text-ink hover:text-deepGreen transition-colors">hola@lumalab.cl</a>
+                </p>
+            </div>
+
+            <!-- Redes Sociales / Columna 4 -->
+            <div class="space-y-4">
+                <h4 class="font-display font-bold text-ink uppercase tracking-wider text-xs">Redes</h4>
+                <div class="flex items-center gap-4">
+                    <!-- Instagram Link (Estilo Line Art) -->
+                    <a href="https://instagram.com/lumalab_chile" target="_blank" rel="noopener noreferrer" class="p-2 border-2 border-ink rounded-full hover:bg-sageGreen hover:text-ink text-ink transition-colors" aria-label="Instagram">
+                        <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/luma-lab-chile/" target="_blank" rel="noopener noreferrer" class="p-2 border-2 border-ink rounded-full hover:bg-sageGreen hover:text-ink text-ink transition-colors" aria-label="LinkedIn">
+                        <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="p-2 border-2 border-ink rounded-full hover:bg-sageGreen hover:text-ink text-ink transition-colors" aria-label="Discord">
+                        <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5 5 6C3 9 2 13 2 17l5 2 1-2m8-12 3 1c2 3 3 7 3 11l-5 2-1-2M8 5l1 2m7-2-1 2M7 8c3-2 7-2 10 0M7 16c3 2 7 2 10 0"/><ellipse cx="8.5" cy="12.5" rx="1" ry="1.5"/><ellipse cx="15.5" cy="12.5" rx="1" ry="1.5"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-gray-400">
+                &copy; 2026 Luma Lab. Todos los derechos reservados.
+            </p>
+            <p class="text-sm font-semibold text-ink flex items-center gap-1.5">
+                <!-- Icono de pino o árbol nativo -->
+                <svg class="w-4 h-4 text-deepGreen" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                Hecho desde el sur de Chile con amor.
+            </p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVIDAD JS (Menú hamburguesa y accesibilidad) -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+
+        // Alternar visualización del menú móvil
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                // Efecto visual hamburguesa activa
+                bar1.style.transform = 'translateY(8px) rotate(45deg)';
+                bar2.style.opacity = '0';
+                bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                mobileMenu.classList.add('hidden');
+                // Restaurar hamburguesa pasiva
+                bar1.style.transform = 'none';
+                bar2.style.opacity = '1';
+                bar3.style.transform = 'none';
+            }
+        });
+
+        // Ocultar menú móvil tras pulsar un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                bar1.style.transform = 'none';
+                bar2.style.opacity = '1';
+                bar3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
